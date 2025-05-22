@@ -9,7 +9,7 @@ public class Pallet : WareHouseEntity
         Boxes = [];
         addBoxes(boxes);
     }
-    public override uint Weight => (uint)Boxes.Sum(b => b.Weight) + 30;
+    public override uint Weight => (uint)Boxes.Sum(b => b.Weight) + 30_000;
     public List<Box> Boxes { get; private set; }
     public override uint Volume => (uint)Boxes.Sum(b => b.Volume) + Width * Depth * Height;
     public override DateOnly? ExpirationDate => Boxes.Min(b => b?.ExpirationDate);
