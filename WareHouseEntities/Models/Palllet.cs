@@ -4,14 +4,15 @@ namespace Models;
 
 public class Pallet : WareHouseEntity
 {
-    public Pallet(List<Box> boxes, uint width, uint heigth, uint depth) : base(width, heigth, depth)
+    public Pallet(List<Box> boxes, uint width, uint height, uint depth,uint weight) : base(width, height, depth,weight)
     {
         Boxes = [];
         addBoxes(boxes);
     }
-    public new uint Weigth => (uint)Boxes.Sum(b => b.Weigth) + 30;
+    public override uint Weight => (uint)Boxes.Sum(b => b.Weight) + 30;
     public List<Box> Boxes { get; private set; }
-    public override uint Volume => (uint)Boxes.Sum(b => b.Volume) + Width * Depth * Heigth;
+    public override uint Volume => (uint)Boxes.Sum(b => b.Volume) + Width * Depth * Height;
+    public override DateOnly? ExpirationDate => Boxes.Min(b => b?.ExpirationDate);
     public List<Box> AddBox(Box box)
     {
         if (box.Depth > this.Depth || box.Width > this.Width)
