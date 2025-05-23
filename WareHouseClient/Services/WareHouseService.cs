@@ -9,5 +9,5 @@ public class WareHouseService()
     .OrderBy(p => p.Weight);
 
     public IEnumerable<Pallet> GetTop3PalletsWithMaxExpirationdate(IEnumerable<Pallet> pallets) => pallets.
-    OrderBy(p => p.ExpirationDate).Take(3);
+    OrderByDescending(p => p.ExpirationDate).ThenByDescending(p => p.Volume).Take(3);
 }
