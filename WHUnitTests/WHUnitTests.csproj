@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WareHouseEntities\WareHouseEntities.csproj" />
+    <ProjectReference Include="..\WareHouseClient\WareHouseClient.csproj" />
   </ItemGroup>
 
 </Project>
